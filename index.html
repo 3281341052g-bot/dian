@@ -3,66 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>📚 电子书阅读器</title>
+  <title>📚 书架</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 背景光球 -->
   <div class="bg-orb orb1"></div>
   <div class="bg-orb orb2"></div>
   <div class="bg-orb orb3"></div>
 
-  <!-- 顶部导航 -->
+  <!-- 导航栏 -->
   <nav class="navbar glass">
     <div class="nav-brand">
       <span class="nav-icon">📚</span>
-      <span class="nav-title">电子书阅读器</span>
+      <span class="nav-title">我的书架</span>
     </div>
-    <button class="btn-upload glass-btn" id="uploadBtn">
-      <span>＋</span> 添加书籍
-    </button>
-    <input type="file" id="fileInput" accept=".pdf" multiple hidden />
+    <span class="nav-sub">共 <span id="totalCount">0</span> 本书</span>
   </nav>
 
-  <!-- 主内容区 -->
+  <!-- 主内容 -->
   <main class="main-container">
-    <!-- 拖拽上传区 -->
-    <div class="drop-zone glass" id="dropZone">
-      <div class="drop-icon">📖</div>
-      <p class="drop-text">拖拽 PDF 文件到此处上传</p>
-      <p class="drop-subtext">或点击右上角"添加书籍"按钮</p>
-    </div>
-
-    <!-- 书库标题 -->
-    <div class="section-header" id="libraryHeader" style="display:none">
-      <h2 class="section-title">我的书架</h2>
-      <span class="book-count" id="bookCount">0 本书</span>
+    <!-- 加载中 -->
+    <div class="loading-state" id="loadingState">
+      <div class="spinner large"></div>
+      <p>书架加载中...</p>
     </div>
 
     <!-- 书籍网格 -->
-    <div class="book-grid" id="bookGrid"></div>
+    <div class="book-grid" id="bookGrid" style="display:none"></div>
 
     <!-- 空状态 -->
-    <div class="empty-state glass" id="emptyState">
+    <div class="empty-state glass" id="emptyState" style="display:none">
       <div class="empty-icon">🌙</div>
-      <h3>书架还是空的</h3>
-      <p>上传你的第一本 PDF 电子书吧！</p>
-      <button class="btn-primary glass-btn" id="emptyUploadBtn">
-        ＋ 上传电子书
-      </button>
+      <h3>书架暂时是空的</h3>
+      <p>请稍后再来看看～</p>
     </div>
   </main>
-
-  <!-- Toast 通知 -->
-  <div class="toast glass" id="toast"></div>
-
-  <!-- 上传进度遮罩 -->
-  <div class="loading-overlay" id="loadingOverlay" style="display:none">
-    <div class="loading-card glass">
-      <div class="spinner"></div>
-      <p id="loadingText">正在处理...</p>
-    </div>
-  </div>
 
   <script src="app.js"></script>
 </body>
