@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>阅读中 — 电子书阅读器</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body class="reader-body">
+  <!-- 背景光球 -->
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+  <div class="bg-orb orb3"></div>
+
+  <!-- 顶部工具栏 -->
+  <header class="reader-toolbar glass" id="readerToolbar">
+    <div class="toolbar-left">
+      <button class="icon-btn glass-btn" id="backBtn" title="返回书架">
+        ← 返回
+      </button>
+      <span class="book-title-bar" id="bookTitleBar">加载中...</span>
+    </div>
+    <div class="toolbar-center">
+      <span class="page-info">
+        第 <span id="currentPageDisplay">-</span> 页 /
+        共 <span id="totalPagesDisplay">-</span> 页
+      </span>
+    </div>
+    <div class="toolbar-right">
+      <button class="icon-btn glass-btn" id="zoomOutBtn" title="缩小">－</button>
+      <span class="zoom-label" id="zoomLabel">100%</span>
+      <button class="icon-btn glass-btn" id="zoomInBtn" title="放大">＋</button>
+      <button class="icon-btn glass-btn" id="fullscreenBtn" title="全屏">⛶</button>
+    </div>
+  </header>
+
+  <!-- PDF 画布区域 -->
+  <div class="reader-canvas-wrap" id="canvasWrap">
+    <div class="canvas-container">
+      <canvas id="pdfCanvas"></canvas>
+      <div class="page-loading" id="pageLoading">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部控制栏 -->
+  <footer class="reader-footer glass" id="readerFooter">
+    <button class="nav-btn glass-btn" id="prevBtn">◀ 上一页</button>
+
+    <div class="progress-wrap">
+      <input
+        type="range"
+        id="progressSlider"
+        class="progress-slider"
+        min="1"
+        value="1"
+      />
+      <div class="page-jump">
+        跳转到
+        <input type="number" id="pageJumpInput" class="page-input glass" min="1" value="1" />
+        页
+        <button class="glass-btn small-btn" id="pageJumpBtn">Go</button>
+      </div>
+    </div>
+
+    <button class="nav-btn glass-btn" id="nextBtn">下一页 ▶</button>
+  </footer>
+
+  <!-- 读完提示 -->
+  <div class="finish-overlay" id="finishOverlay" style="display:none">
+    <div class="finish-card glass">
+      <div class="finish-icon">🎉</div>
+      <h3>恭喜你读完了！</h3>
+      <p>这本书你已经阅读完毕</p>
+      <div class="finish-btns">
+        <button class="glass-btn" id="restartBtn">从头再读</button>
+        <button class="btn-primary glass-btn" id="backToLibBtn">返回书架</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="reader.js"></script>
+</body>
+</html>
